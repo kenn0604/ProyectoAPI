@@ -13,7 +13,7 @@ function uno (id) {
 }
 //funcion delete
 function eliminar (body) {
-    return db.eliminar(TABLA,body);
+    return db.eliminar(TABLA,body,'id');
 }
 //funcion add
 function agregar (body) {
