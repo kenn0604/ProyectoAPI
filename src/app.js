@@ -4,6 +4,7 @@ const config = require('./config');
 const clientes = require('./modulos/rutas/rutasClientes')
 const products = require('./modulos/rutas/rutasProductos')
 const customers = require('./modulos/rutas/rutasCustomers')
+const employees = require('./modulos/rutas/rutasEmployees')
 
 const error = require('./red/errors');
 
@@ -21,6 +22,7 @@ app.set('port', config.app.port);
 app.use('/api/clientes', clientes) 
 app.use('/api/products',products )
 app.use('/api/customers',customers )
+app.use('/api/employees',employees )
 app.use(error);  
 
 module.exports = app;
