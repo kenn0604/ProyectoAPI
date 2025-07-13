@@ -33,12 +33,10 @@ async function uno (req, res, next){
 
 async function agregar (req, res, next){
     try {
-        const items = await controlador.agregar(req.body);
-        if(req.body.id == 0 ){
-            mensaje = 'ITEM guardado con exito';
-        }else{
-            mensaje = 'ITEM actualizado con exito';
-        }
+        const result = await controlador.agregar(req.body);
+        const mensaje = result.accion === 'insertado'
+            ? 'ITEM guardado con éxito'
+            : 'ITEM actualizado con éxito';
         respuesta.success(req, res, mensaje, 201);
     } catch (err) {
         next(err);
@@ -47,6 +45,7 @@ async function agregar (req, res, next){
 
 async function eliminar (req, res, next){
     console.log("Estoy recibiendo ",req.body)
+    console.log("ID a eliminar:", id_products);
     try {
         const items = await controlador.eliminar(req.body);
         respuesta.success(req, res, 'ITEM eliminado satisfactoriamente', 200);

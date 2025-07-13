@@ -22,6 +22,7 @@ async function todos (req, res, next){
 };
 
 async function uno (req, res, next){
+    console.log('🔍 Recibiendo ID por parámetro:', req.params.id);
     try {
         const items = await controlador.uno(req.params.id);
         respuesta.success(req, res, items, 200);
@@ -33,18 +34,15 @@ async function uno (req, res, next){
 
 async function agregar (req, res, next){
     try {
-        const items = await controlador.agregar(req.body);
-        if(!req.body.customer_id || req.body.customer_id === 0){
-            mensaje = 'ITEM guardado con éxito';
-        }else{
-            mensaje = 'ITEM actualizado con éxito';
-        }
+        const result = await controlador.agregar(req.body);
+        const mensaje = result.accion === 'insertado'
+            ? 'ITEM guardado con éxito'
+            : 'ITEM actualizado con éxito';
         respuesta.success(req, res, mensaje, 201);
     } catch (err) {
         next(err);
     }
 };
-
 
 async function eliminar (req, res, next){
     const { customer_id } = req.body;

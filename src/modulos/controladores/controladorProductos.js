@@ -9,15 +9,15 @@ function todos () {
 }
 //funcion getbyid
 function uno (id) {
-    return db.uno(TABLA,id);
+    return db.uno(TABLA,id,'id_product');
 }
 //funcion delete
 function eliminar (body) {
-    return db.eliminar(TABLA,body);
+    return db.eliminar(TABLA,body,'id_product');
 }
 //funcion add
 function agregar (body) {
-    return db.agregar(TABLA,body);
+    return db.agregar(TABLA,body,'id_product');
 }
 
 module.exports = {

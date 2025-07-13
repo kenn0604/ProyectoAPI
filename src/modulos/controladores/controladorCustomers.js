@@ -20,7 +20,6 @@ function agregar(body) {
     return db.agregar(TABLA, body, 'customer_id');
 }
 
-
 module.exports = {
     todos,
     uno,
