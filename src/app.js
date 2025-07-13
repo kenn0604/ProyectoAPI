@@ -6,6 +6,7 @@ const products = require('./modulos/rutas/rutasProductos')
 const customers = require('./modulos/rutas/rutasCustomers')
 const employees = require('./modulos/rutas/rutasEmployees')
 const sales = require('./modulos/rutas/rutasSales')
+const saleDetails = require('./modulos/rutas/rutasSaleDetails')
 
 
 const error = require('./red/errors');
@@ -26,6 +27,7 @@ app.use('/api/products',products )
 app.use('/api/customers',customers )
 app.use('/api/employees',employees )
 app.use('/api/sales',sales )
+app.use('/api/sale-details',saleDetails )
 app.use(error);  
 
 module.exports = app;
